@@ -1,0 +1,7 @@
+export {default as Login} from './Login'
+export {default as UserList} from './UserList'
+export {default as Work} from './Work'
+export {default as Currency} from './Currency'
+export {default as Zamin} from './Zamin'
+export {default as Pay} from './Pay'
+export {default as Summary} from './Summary'

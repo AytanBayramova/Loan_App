@@ -1,0 +1,73 @@
+{
+    "FMP": [
+      {
+        "label": "Loan Amount",
+        "event": "loanAmount"
+      },
+      {
+        "label": "Interest Rate (%)",
+        "event": "interestRate"
+      },
+      {
+        "label": "Number of Months",
+        "event": "numberOfMonths"
+      }
+    ],
+    "FIR": [
+      {
+        "label": "Loan Amount",
+        "event": "loanAmount"
+      },
+      {
+        "label": "Number of Months",
+        "event": "numberOfMonths"
+      },
+      {
+        "label": "Monthly Payment",
+        "event": "monthlyPaymentAmount"
+      }
+    ],
+    "FLA": [
+      {
+        "label": "Interest Rate (%)",
+        "event": "interestRate"
+      },
+      {
+        "label": "Number of Months",
+        "event": "numberOfMonths"
+      },
+      {
+        "label": "Monthly Payment",
+        "event": "monthlyPaymentAmount"
+      }
+    ],
+    "FNM": [
+      {
+        "label": "Loan Amount",
+        "event": "loanAmount"
+      },
+      {
+        "label": "Interest Rate (%)",
+        "event": "interestRate"
+      },
+      {
+        "label": "Monthly Payment",
+        "event": "monthlyPaymentAmount"
+      }
+    ],
+    "FM": [
+      {
+        "label": "Loan Amount",
+        "event": "loanAmount"
+      },
+      {
+        "label": "Interest Rate (%)",
+        "event": "interestRate"
+      },
+      {
+        "label": "Term Length (Yrs)",
+        "event": "termLength"
+      }
+    ]
+  }
+  
