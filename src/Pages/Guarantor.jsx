@@ -1,10 +1,15 @@
 import { useNavigate, useParams } from 'react-router-dom';
+
+import { GuarantorItem } from './GuarantorItem';
+import { getListEmployees } from './../service/localstorage';
+
+
 import { addEmployee, getEmployeeById } from '../service/localstorage';
 import { useForm } from './../hooks/useForm';
 import uuid from 'react-uuid';
 import { useState, useEffect } from 'react';
 import { editEmployee } from './../service/localstorage';
-export const Login = () => {
+export const Guarantor = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const [showAlert, setshowAlert] = useState(false);
@@ -36,13 +41,22 @@ export const Login = () => {
         }, 2000);
     };
 
+
+    const [employees, setEmployees] = useState([]);
+
+    useEffect(() => {
+        setEmployees(getListEmployees());
+    }, []);
+
     return (
+
+        <>
         
         <div>
 
             <div className="d-flex my-5 justify-content-between">
       <h1></h1>
-                <h1 className="text-center">{id ? "Edit" : "Add new"} Customer</h1>
+                <h1 className="text-center">{id ? "Edit" : "Add new"} Guarantor</h1>
                 <div />
             </div>
 
@@ -146,7 +160,7 @@ export const Login = () => {
 
 
                     <div className="d-grid gap-2 mt-3">
-                        <button  type="submit" className="btn btn-outline-primary btn-block">{id ? "Edit" : "Add"} Customer</button>
+                        <button  type="submit" className="btn btn-outline-primary btn-block">{id ? "Edit" : "Add"} Guarantor</button>
                     </div>
                 </form>
             </div>
@@ -155,15 +169,55 @@ export const Login = () => {
                 showAlert && (
                     <div className="px-4">
                         <div className="alert alert-success">
-                            <strong>Well done!</strong> {id ? "edit" : "added a new"} Customer.
+                            <strong>Well done!</strong> {id ? "edit" : "added a new"} Guarantor.
                         </div>
                     </div>
                 )
             }
 
         </div >
+
+<div>
+<h1 className="my-5 text-center">Guarantors Information</h1>
+
+{
+    employees.length > 0 ? (
+        <div className="card bg-secondary p-3">
+            <table className="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Adress</th>
+                        <th scope="col">FIN</th>
+                        <th scope="col">Series</th>
+                        <th scope="col">FirstName Surname Paternal name</th>
+                        <th scope="col">Registration address</th>
+                        <th scope="col">Date of birth</th>
+                        <th scope="col">Phone</th>
+                    </tr>
+                </thead>
+               
+                <tbody>
+                    {
+                        employees.map(employee => <GuarantorItem employee={employee} key={employee.id} setEmployees={setEmployees} />)
+                    }
+                </tbody>
+            </table>
+        </div>
+    ) : (
+        <h3 className="text-center">No Guarantor</h3>
+    )
+}
+
+<div className="ms-5 gap-2 mt-1">
+            <button  type="submit" className="btn btn-outline-primary btn-block">Next</button>
+        </div>
+
+</div>
+
+</>
+
         
     )
 }
 
-export default Login
+export default Guarantor

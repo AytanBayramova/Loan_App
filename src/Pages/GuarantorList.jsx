@@ -1,8 +1,8 @@
-import { UserItem } from './UserItem';
+import { GuarantorItem } from './GuarantorItem';
 import { useEffect, useState } from 'react';
 import { getListEmployees } from './../service/localstorage';
 
-export const UserList = () => {
+export const GuarantorList = () => {
     const [employees, setEmployees] = useState([]);
 
     useEffect(() => {
@@ -11,7 +11,7 @@ export const UserList = () => {
 
     return (
         <div>
-            <h1 className="my-5 text-center">Customer Information</h1>
+            <h1 className="my-5 text-center">Guarantors Information</h1>
 
             {
                 employees.length > 0 ? (
@@ -31,18 +31,18 @@ export const UserList = () => {
                            
                             <tbody>
                                 {
-                                    employees.map(employee => <UserItem employee={employee} key={employee.id} setEmployees={setEmployees} />)
+                                    employees.map(employee => <GuarantorItem employee={employee} key={employee.id} setEmployees={setEmployees} />)
                                 }
                             </tbody>
                         </table>
                     </div>
                 ) : (
-                    <h3 className="text-center">No Customer</h3>
+                    <h3 className="text-center">No Guarantor</h3>
                 )
             }
 
 <div className="ms-5 gap-2 mt-1">
-                        <button  type="submit" className="btn btn-outline-primary btn-block">Create a new credit order</button>
+                        <button  type="submit" className="btn btn-outline-primary btn-block">Next</button>
                     </div>
 
         </div>
@@ -51,4 +51,4 @@ export const UserList = () => {
     )
 }
 
-export default UserList
+export default GuarantorList

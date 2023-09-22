@@ -3,8 +3,8 @@ import { removeEmployee } from '../service/localstorage';
 import { getListEmployees } from '../service/localstorage';
 import { useNavigate } from 'react-router-dom';
 
-export const UserItem = ({ employee, setEmployees }) => {
-    const { id, adress, fin, series, name, mainadress, birth,phone } = employee;
+export const WorkItem = ({ employee, setEmployees }) => {
+    const { id, income, experience, experience1, region, biznes } = employee;
     const navigate = useNavigate();
 
     const deleteEmployee = () => {
@@ -14,13 +14,12 @@ export const UserItem = ({ employee, setEmployees }) => {
 
     return (
         <tr className="table-primasry">
-            <th>{adress}</th>
-            <td>{fin}</td>
-            <td>{series}</td>
-            <td>{name}</td>
-            <td>{mainadress}</td>
-            <td>{birth}</td>
-            <td>{phone}</td>
+            <th>{income}</th>
+            <td>{experience}</td>
+            <td>{experience1}</td>
+            <td>{region}</td>
+            <td>{biznes}</td>
+           
             <td>
                 <div className="d-flex gap-3">
                     <span type="button" className="badge bg-success" onClick={() => navigate(`/edit-employee/${id}`)}>Edit</span>
