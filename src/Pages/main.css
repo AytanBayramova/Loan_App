@@ -49,7 +49,7 @@
   }
 
   .getLoan{
-    background-color: rgb(36, 102, 201);
+    background-color: #003366;
     font-size: 18px; 
     padding: 10px 20px;
     color: white;
@@ -60,7 +60,7 @@
    
   }
   .getLoan:hover{
-    background-color: rgb(4, 4, 172);
+    background-color: #035096;
     color: rgb(255, 248, 248);
   }
 

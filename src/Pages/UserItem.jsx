@@ -14,7 +14,7 @@ export const UserItem = ({ employee, setEmployees }) => {
 
     return (
         <tr className="table-primasry">
-            <th>{adress}</th>
+            <td>{adress}</td>
             <td>{fin}</td>
             <td>{series}</td>
             <td>{name}</td>
@@ -23,7 +23,6 @@ export const UserItem = ({ employee, setEmployees }) => {
             <td>{phone}</td>
             <td>
                 <div className="d-flex gap-3">
-                    <span type="button" className="badge bg-success" onClick={() => navigate(`/edit-employee/${id}`)}>Edit</span>
                     <span type="button" className="badge bg-danger" onClick={() => deleteEmployee()}>Delete</span>
                 </div>
             </td>

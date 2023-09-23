@@ -4,8 +4,13 @@ import { useForm } from './../hooks/useForm';
 import uuid from 'react-uuid';
 import { useState, useEffect } from 'react';
 import { editEmployee } from './../service/localstorage';
+import './user.css'
 export const Login = () => {
     const navigate = useNavigate();
+
+    const handlButtonClick = () => {
+      navigate('/UserList'); // Navigate to the '/home' route when the button is clicked
+    };
     const { id } = useParams();
     const [showAlert, setshowAlert] = useState(false);
     const { inputValues, handleInputChange, resetForm, setForm } = useForm({
@@ -53,6 +58,7 @@ export const Login = () => {
                         <input
                         
                             type="text"
+                            required
                             name="adress"
                             value={inputValues.adress}
                             onChange={handleInputChange}
@@ -69,6 +75,7 @@ export const Login = () => {
                         <input
                        
                             name="fin"
+                            required
                             type="text"
                             value={inputValues.fin}
                             onChange={handleInputChange}
@@ -82,6 +89,7 @@ export const Login = () => {
                         <input
                        
                             name="series"
+                            required
                             type="text"
                             value={inputValues.seria}
                             onChange={handleInputChange}
@@ -95,6 +103,7 @@ export const Login = () => {
                         <input
                        
                             name="name"
+                            required
                             type="text"
                             value={inputValues.name}
                             onChange={handleInputChange}
@@ -110,6 +119,7 @@ export const Login = () => {
                         <input
                         
                             type="text"
+                            required
                             name="mainadress"
                             value={inputValues.mainadress}
                             onChange={handleInputChange}
@@ -123,7 +133,8 @@ export const Login = () => {
                         <input
                        
                             name="birth"
-                            type="calendar"
+                            type="date"
+                            required
                             value={inputValues.birth}
                             onChange={handleInputChange}
                             className="form-control"
@@ -136,7 +147,10 @@ export const Login = () => {
                         <label className="form-label mt-2" htmlFor="inputValid">Phone</label>
                         <input 
                             name="phone"
-                            type="text"
+                            required
+                            type="tel"
+                            placeholder="050-200-20-20"
+                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
                             value={inputValues.phone}
                             onChange={handleInputChange}
                             className="form-control"
@@ -146,7 +160,7 @@ export const Login = () => {
 
 
                     <div className="d-grid gap-2 mt-3">
-                        <button  type="submit" className="btn btn-outline-primary btn-block">{id ? "Edit" : "Add"} Customer</button>
+                        <button    type="submit" className="btn  btn-outline-primary btn-block">{id ? "Edit" : "Add"} Customer</button>
                     </div>
                 </form>
             </div>

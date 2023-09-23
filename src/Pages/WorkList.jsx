@@ -40,9 +40,7 @@ export const WorkList = () => {
                 )
             }
 
-<div className="ms-5 gap-2 mt-1">
-                        <button  type="submit" className="btn btn-outline-primary btn-block">Next</button>
-                    </div>
+
 
         </div>
 

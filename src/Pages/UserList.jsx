@@ -1,11 +1,15 @@
 import { UserItem } from './UserItem';
 import { useEffect, useState } from 'react';
 import { getListEmployees } from './../service/localstorage';
+import { useNavigate } from 'react-router-dom';
 
+import './user.css'
 export const UserList = () => {
     const [employees, setEmployees] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
+        
         setEmployees(getListEmployees());
     }, []);
 
@@ -41,9 +45,7 @@ export const UserList = () => {
                 )
             }
 
-<div className="ms-5 gap-2 mt-1">
-                        <button  type="submit" className="btn btn-outline-primary btn-block">Create a new credit order</button>
-                    </div>
+
 
         </div>
 

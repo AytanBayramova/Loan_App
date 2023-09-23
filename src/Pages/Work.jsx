@@ -137,6 +137,10 @@ export const Work = () => {
 
 <LoanCalculator/>
 <Guarantor/>
+<div className="ms-5 gap-2 mt-1">
+                        <button onClick={() => navigate("/Summary")}  type="submit" className="btn btn-outline-primary 
+                        ">Next</button>
+                    </div>
 
         </div >
     )

@@ -40,10 +40,9 @@ export const GuarantorList = () => {
                     <h3 className="text-center">No Guarantor</h3>
                 )
             }
+         
 
-<div className="ms-5 gap-2 mt-1">
-                        <button  type="submit" className="btn btn-outline-primary btn-block">Next</button>
-                    </div>
+
 
         </div>
 

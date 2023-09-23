@@ -3,10 +3,26 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Main, Login,  UserList, WorkList,LoanCalculator,LoanResultsTable, Guarantor,GuarantorList,Work,  Summary } from './Pages';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
-
+import './App.css';
+import {useState, useEffect} from 'react'
 const App = () => {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(()=>{
+    setLoading(true);
+    setTimeout(()=>{
+      setLoading(false);
+
+    },2000);
+  }, []);
   return (
   <div>
+      {loading ? (
+      <div className='center'>
+      <div className='ring'></div>
+        <span className='loading'>Loading...</span>
+     </div> 
+    ):(
     <BrowserRouter>
   <Navbar/>
     <Routes>
@@ -25,6 +41,7 @@ const App = () => {
     <Footer/>
     
     </BrowserRouter>
+        )}
   </div>
   )
 }
