@@ -4,7 +4,7 @@ import { getListEmployees } from '../service/localstorage';
 import { useNavigate } from 'react-router-dom';
 import './guarantor.css' 
 export const UserItem = ({ employee, setEmployees }) => {
-    const { id, adress, fin, series, name, mainadress, birth,phone } = employee;
+    const { id, adress, fin, series, name, mainadress, birth, phone } = employee;
     const navigate = useNavigate();
 
     const deleteEmployee = () => {

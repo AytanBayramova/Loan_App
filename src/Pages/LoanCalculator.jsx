@@ -1,18 +1,16 @@
-import "./LoanCalculator.css";
+import React, { useState } from "react";
 import LoanJS from "loanjs";
-import { useState } from "react";
-import './summary.css'
-import { Link } from "react-router-dom";
-import LoanTable from "./LoanTable"; 
-export default function LoanCalculator() {
+import './LoanCalculator.css';
+import './summary.css';
+
+const LoanCalculator = () => {
   const [values, setValues] = useState({
     "loan-type": "",
-    "loan-amount": 0,
-    "loan-term": 0,
-    "interest-rate": 0,
+    "loan-amount": "",
+    "loan-term": "",
+    "interest-rate": "",
   });
 
-  
   const [installments, setInstallments] = useState([]);
 
   const handleInputChange = (event) => {
@@ -51,17 +49,15 @@ export default function LoanCalculator() {
       <h1 className="LoanWrite">Loan Calculator</h1>
 
       <form onSubmit={handleSubmit}>
-       
-
         <div className="form-item">
-        <label htmlFor="loan-type">Purpose of loan</label>
-        <div className="form-input">
+          <label htmlFor="loan-type">Purpose of loan</label>
+          <div className="form-input">
             <select
               name="loan-type"
               value={values["loan-type"]}
               onChange={handleInputChange}
             >
-                <option value="">Select a loan type</option>
+              <option value="">Select a loan type</option>
               <option value="Personal Loan">Personal Loan</option>
               <option value="Home Loan">Home Loan</option>
               <option value="Auto Loan">Auto Loan</option>
@@ -69,11 +65,9 @@ export default function LoanCalculator() {
               <option value="Business Loan">Business Loan</option>
             </select>
           </div>
-          </div>
-          <div className="form-item">
+        </div>
+        <div className="form-item">
           <label htmlFor="loan-amount">Loan Amount</label>
-
-          
           <div className="form-input">
             <input
               type="number"
@@ -113,16 +107,37 @@ export default function LoanCalculator() {
             type="submit"
             value="Calculate"
             className="calculate-button"
-          ></input>
+          />
         </div>
       </form>
-
-     
       <div className="loan-table">
-        {/* Pass the installments and amountFormat function as props */}
-        <LoanTable installments={installments} amountFormat={amountFormat} />
+        {!!installments?.length && (
+          <table>
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Payment Amount</th>
+                <th>Interest Paid</th>
+                <th>Principal Paid</th>
+                <th>Remain</th>
+              </tr>
+            </thead>
+            <tbody>
+              {installments.map((i, ind) => (
+                <tr key={ind}>
+                  <td>{ind}</td>
+                  <td>{amountFormat(i.installment)}</td>
+                  <td>{amountFormat(i.interest)}</td>
+                  <td>{amountFormat(i.capital)}</td>
+                  <td>{amountFormat(i.remain)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
-
     </div>
   );
-}
+};
+
+export default LoanCalculator;

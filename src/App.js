@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Main, Login,  UserList, WorkList,LoanCalculator,LoanTable, UserInfo, LoanResultsTable, Guarantor,GuarantorList,Work,  Summary } from './Pages';
+import { Main, Login,  UserList, WorkList,LoanCalculator, UserInfo, Guarantor,GuarantorList,Work,  Summary } from './Pages';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import './App.css';
@@ -33,11 +33,9 @@ const App = () => {
         <Route path='/work' element={<Work/>}/>
         <Route path='/worklist' element={<WorkList/>}/>
         <Route path='/LoanCalculator' element={<LoanCalculator/>}/>
-        <Route path='/LoanResultsTable' element={<LoanResultsTable/>}/>
         <Route path='/Guarantor' element={<Guarantor/>}/>
         <Route path='/GuarantorList' element={<GuarantorList/>}/>
         <Route path='/summary' element={<Summary/>}/>
-        <Route path='/LoanTable' element={<LoanTable/>}/>
     </Routes>
 
     <Footer/>

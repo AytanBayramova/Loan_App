@@ -12,8 +12,9 @@ export const Login = () => {
   const { id } = useParams();
   const [showAlert, setshowAlert] = useState(false);
   const { inputValues, handleInputChange, resetForm, setForm } = useForm({
-    adress: '',
+   
     fin: '',
+    adress: '',
     series: '',
     name: '',
     mainadress: '',
@@ -61,6 +62,7 @@ export const Login = () => {
   return (
     <div>
       <div className="d-flex my-5 justify-content-between">
+        <h1></h1>
         <h1 className="text-center">{id ? "Edit" : "Add new"} Customer</h1>
         <div />
       </div>
@@ -236,5 +238,4 @@ export const Login = () => {
     </div>
   );
 };
-
-export default Login;
+export default Login

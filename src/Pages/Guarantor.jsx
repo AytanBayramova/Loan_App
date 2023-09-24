@@ -38,7 +38,9 @@ export const Guarantor = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        id ? editGuarantor(id, inputValues) : addGuarantor({ id: uuid(), ...inputValues });
+        const newGuarantor = { id: uuid(), ...inputValues };
+        addGuarantor(newGuarantor); // Add to local storage
+        setGuarantors((prevGuarantors) => [...prevGuarantors, newGuarantor]); // Update state
         resetForm();
         setshowAlert(true);
         setTimeout(() => {

@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import UserInfo from './UserInfo';
 import WorkList from './WorkList';
-import LoanCalculator from './LoanCalculator';
 import GuarantorList from './GuarantorList';
 import { useNavigate } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
@@ -77,7 +76,6 @@ const Summary = () => {
         </div>
         <UserInfo />
         <WorkList />
-        <LoanCalculator />
         <GuarantorList />
       </div>
 
@@ -106,7 +104,7 @@ const Summary = () => {
       {/* Submit Loan Modal */}
       <Modal show={showSubmitModal} onHide={handleCloseSubmitModal}>
         <Modal.Header closeButton>
-          <Modal.Title className='well'>Well Done!</Modal.Title>
+          <Modal.Title className="well">Well Done!</Modal.Title>
         </Modal.Header>
         <Modal.Body>Your loan has been submitted successfully.</Modal.Body>
         <Modal.Footer>
@@ -125,7 +123,7 @@ const Summary = () => {
       {/* Cancel Loan Modal */}
       <Modal show={showCancelModal} onHide={handleCloseCancelModal}>
         <Modal.Header closeButton>
-          <Modal.Title className='cancel'>Cancel Loan</Modal.Title>
+          <Modal.Title className="cancel">Cancel Loan</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="mb-3">
