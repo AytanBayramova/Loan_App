@@ -13,6 +13,10 @@ export const UserList = () => {
         setEmployees(getListEmployees());
     }, []);
 
+    const handleNextClick = () => {
+        navigate('/Work');
+    };
+
     return (
         <div>
             <h1 className="my-5 text-center">Customer Information</h1>
@@ -31,6 +35,7 @@ export const UserList = () => {
                                     <th scope="col">Date of birth</th>
                                     <th scope="col">Phone</th>
                                 </tr>
+                                
                             </thead>
                            
                             <tbody>
@@ -39,6 +44,11 @@ export const UserList = () => {
                                 }
                             </tbody>
                         </table>
+
+                        <div className="ms-5 gap-2 mt-1">
+                        <button type="submit" onClick={handleNextClick} className="btn btn-outline-primary">Next</button>
+                    </div>
+
                     </div>
                 ) : (
                     <h3 className="text-center">No Customer</h3>

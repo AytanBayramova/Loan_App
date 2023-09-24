@@ -1,12 +1,12 @@
 import { WorkItem } from './WorkItem';
 import { useEffect, useState } from 'react';
-import { getListEmployees } from './../service/localstorage';
+import { getListWorks } from './../service/localstorageWork';
 
 export const WorkList = () => {
-    const [employees, setEmployees] = useState([]);
+    const [works, setWorks] = useState([]);
 
     useEffect(() => {
-        setEmployees(getListEmployees());
+        setWorks(getListWorks());
     }, []);
 
     return (
@@ -14,7 +14,7 @@ export const WorkList = () => {
             <h1 className="my-5 text-center">Customer Activity sector Information</h1>
 
             {
-                employees.length > 0 ? (
+                works.length > 0 ? (
                     <div className="card bg-secondary p-3">
                         <table className="table table-hover">
                             <thead>
@@ -30,7 +30,7 @@ export const WorkList = () => {
                            
                             <tbody>
                                 {
-                                    employees.map(employee => <WorkItem employee={employee} key={employee.id} setEmployees={setEmployees} />)
+                                    works.map(work => <WorkItem work={work} key={work.id} setWorks={setWorks} />)
                                 }
                             </tbody>
                         </table>

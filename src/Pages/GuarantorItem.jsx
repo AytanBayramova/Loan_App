@@ -1,15 +1,15 @@
 import React from 'react'
-import { removeEmployee } from '../service/localstorage';
-import { getListEmployees } from '../service/localstorage';
+import { removeGuarantor } from '../service/localstorageG';
+import { getListGuarantors } from '../service/localstorageG';
 import { useNavigate } from 'react-router-dom';
 import './guarantor.css'
-export const GuarantorItem = ({ employee, setEmployees }) => {
-    const { id, adress, fin, series, name, mainadress, birth,phone } = employee;
+export const GuarantorItem = ({ guarantor, setGuarantors }) => {
+    const { id, adress, fin, series, name, mainadress, birth,phone } = guarantor;
     const navigate = useNavigate();
 
-    const deleteEmployee = () => {
-        removeEmployee(id);
-        setEmployees(getListEmployees());
+    const deleteGuarantor = () => {
+        removeGuarantor(id);
+        setGuarantors(getListGuarantors());
     }
 
     return (
@@ -24,7 +24,7 @@ export const GuarantorItem = ({ employee, setEmployees }) => {
             <td  className="table-cell">{phone}</td>
             <td  className="table-cell">
                 <div className="d-flex gap-3">
-                    <span type="button" className="badge bg-danger" onClick={() => deleteEmployee()}>Delete</span>
+                    <span type="button" className="badge bg-danger" onClick={() => deleteGuarantor()}>Delete</span>
                 </div>
             </td>
            

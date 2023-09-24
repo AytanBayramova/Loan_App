@@ -1,22 +1,24 @@
-import { GuarantorItem } from './GuarantorItem';
+import { UserItem } from './UserItem';
 import { useEffect, useState } from 'react';
-import { getListGuarantors } from './../service/localstorageG';
+import { getListEmployees } from './../service/localstorage';
+import { useNavigate } from 'react-router-dom';
 
-export const GuarantorList = () => {
-    const [guarantors, setGuarantors] = useState([]);
+import './user.css'
+export const UserInfo = () => {
+    const [employees, setEmployees] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        setGuarantors(getListGuarantors());
+        
+        setEmployees(getListEmployees());
     }, []);
-
-    
 
     return (
         <div>
-            <h1 className="my-5 text-center">Guarantors Information</h1>
+            <h1 className="my-5 text-center">Customer Information</h1>
 
             {
-                guarantors.length > 0 ? (
+                employees.length > 0 ? (
                     <div className="card bg-secondary p-3">
                         <table className="table table-hover">
                             <thead>
@@ -33,16 +35,15 @@ export const GuarantorList = () => {
                            
                             <tbody>
                                 {
-                                    guarantors.map(guarantor => <GuarantorItem guarantor={guarantor} key={guarantor.id} setGuarantors={setGuarantors} />)
+                                    employees.map(employee => <UserItem employee={employee} key={employee.id} setEmployees={setEmployees} />)
                                 }
                             </tbody>
                         </table>
                     </div>
                 ) : (
-                    <h3 className="text-center">No Guarantor</h3>
+                    <h3 className="text-center">No Customer</h3>
                 )
             }
-         
 
 
 
@@ -52,4 +53,4 @@ export const GuarantorList = () => {
     )
 }
 
-export default GuarantorList
+export default UserInfo

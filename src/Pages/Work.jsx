@@ -1,9 +1,9 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { addEmployee, getEmployeeById } from '../service/localstorage';
+import { addWork, getWorkById } from '../service/localstorageWork';
 import { useForm } from './../hooks/useForm';
 import uuid from 'react-uuid';
 import { useState, useEffect } from 'react';
-import { editEmployee } from './../service/localstorage';
+import { editWork } from './../service/localstorageWork';
 import LoanCalculator from './LoanCalculator';
 import Guarantor from './Guarantor';
 export const Work = () => {
@@ -21,14 +21,14 @@ export const Work = () => {
 
     useEffect(() => {
         if (id) {
-            const employee = getEmployeeById(id);
-            setForm(employee);
+            const Work = getWorkById(id);
+            setForm(Work);
         }
     }, [id]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        id ? editEmployee(id, inputValues) : addEmployee({ id: uuid(), ...inputValues });
+        id ? editWork(id, inputValues) : addWork({ id: uuid(), ...inputValues });
         resetForm();
         setshowAlert(true);
         setTimeout(() => {
@@ -52,6 +52,7 @@ export const Work = () => {
                         <input
                         
                             type="number"
+                            required
                             name="income"
                             value={inputValues.income}
                             onChange={handleInputChange}
@@ -67,6 +68,7 @@ export const Work = () => {
                         <input
                        
                             name="experience"
+                            required
                             type="number"
                             value={inputValues.experience}
                             onChange={handleInputChange}
@@ -80,6 +82,7 @@ export const Work = () => {
                         <input
                        
                             name="experience1"
+                            required
                             type="nuumber"
                             value={inputValues.experience1}
                             onChange={handleInputChange}
@@ -93,6 +96,7 @@ export const Work = () => {
                         <input
                        
                             name="region"
+                            required
                             type="text"
                             value={inputValues.region}
                             onChange={handleInputChange}
@@ -108,6 +112,7 @@ export const Work = () => {
                         <input
                         
                             type="text"
+                            required
                             name="biznes"
                             value={inputValues.biznes}
                             onChange={handleInputChange}
@@ -138,8 +143,7 @@ export const Work = () => {
 <LoanCalculator/>
 <Guarantor/>
 <div className="ms-5 gap-2 mt-1">
-                        <button onClick={() => navigate("/Summary")}  type="submit" className="btn btn-outline-primary 
-                        ">Next</button>
+                        <button onClick={() => navigate("/Summary")}  type="submit" className="btn btn-outline-primary">Next</button>
                     </div>
 
         </div >

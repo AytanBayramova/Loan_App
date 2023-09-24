@@ -4,3 +4,13 @@
 .text-center{
     overflow: hidden;
 }
+.well{
+    color: rgb(0, 112, 0);
+    font-size: 24px;
+    font-weight: 40px;
+}
+.cancel{
+    color: red;
+    font-size: 24px;
+
+}

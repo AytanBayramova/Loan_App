@@ -1,18 +1,21 @@
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { GuarantorItem } from './GuarantorItem';
-import { getListEmployees } from './../service/localstorage';
+import { getListGuarantors } from './../service/localstorageG';
 
 
-import { addEmployee, getEmployeeById } from '../service/localstorage';
+import { addGuarantor, getGuarantorById } from '../service/localstorageG';
 import { useForm } from './../hooks/useForm';
 import uuid from 'react-uuid';
 import { useState, useEffect } from 'react';
-import { editEmployee } from './../service/localstorage';
+import { editGuarantor } from './../service/localstorageG';
 export const Guarantor = () => {
     const navigate = useNavigate();
+    
+    
     const { id } = useParams();
     const [showAlert, setshowAlert] = useState(false);
+    
     const { inputValues, handleInputChange, resetForm, setForm } = useForm({
         adress: '',
         fin: '',
@@ -23,17 +26,19 @@ export const Guarantor = () => {
         phone: ''
     });
 
+    
+
 
     useEffect(() => {
         if (id) {
-            const employee = getEmployeeById(id);
-            setForm(employee);
+            const guarantor = getGuarantorById(id);
+            setForm(guarantor);
         }
     }, [id]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        id ? editEmployee(id, inputValues) : addEmployee({ id: uuid(), ...inputValues });
+        id ? editGuarantor(id, inputValues) : addGuarantor({ id: uuid(), ...inputValues });
         resetForm();
         setshowAlert(true);
         setTimeout(() => {
@@ -42,10 +47,10 @@ export const Guarantor = () => {
     };
 
 
-    const [employees, setEmployees] = useState([]);
+    const [guarantors, setGuarantors] = useState([]);
 
     useEffect(() => {
-        setEmployees(getListEmployees());
+        setGuarantors(getListGuarantors());
     }, []);
 
     return (
@@ -67,6 +72,7 @@ export const Guarantor = () => {
                         <input
                         
                             type="text"
+                            required
                             name="adress"
                             value={inputValues.adress}
                             onChange={handleInputChange}
@@ -83,6 +89,7 @@ export const Guarantor = () => {
                         <input
                        
                             name="fin"
+                            required
                             type="text"
                             value={inputValues.fin}
                             onChange={handleInputChange}
@@ -96,6 +103,7 @@ export const Guarantor = () => {
                         <input
                        
                             name="series"
+                            required
                             type="text"
                             value={inputValues.seria}
                             onChange={handleInputChange}
@@ -109,6 +117,7 @@ export const Guarantor = () => {
                         <input
                        
                             name="name"
+                            required
                             type="text"
                             value={inputValues.name}
                             onChange={handleInputChange}
@@ -124,6 +133,7 @@ export const Guarantor = () => {
                         <input
                         
                             type="text"
+                            required
                             name="mainadress"
                             value={inputValues.mainadress}
                             onChange={handleInputChange}
@@ -137,7 +147,8 @@ export const Guarantor = () => {
                         <input
                        
                             name="birth"
-                            type="calendar"
+                            required
+                            type="date"
                             value={inputValues.birth}
                             onChange={handleInputChange}
                             className="form-control"
@@ -150,7 +161,10 @@ export const Guarantor = () => {
                         <label className="form-label mt-2" htmlFor="inputValid">Phone</label>
                         <input 
                             name="phone"
-                            type="text"
+                            required
+                            type="tel"
+                            placeholder="050-200-20-20"
+                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
                             value={inputValues.phone}
                             onChange={handleInputChange}
                             className="form-control"
@@ -181,7 +195,7 @@ export const Guarantor = () => {
 <h1 className="my-5 text-center">Guarantors Information</h1>
 
 {
-    employees.length > 0 ? (
+    guarantors.length > 0 ? (
         <div className="card bg-secondary p-3">
             <table className="table table-hover">
                 <thead>
@@ -198,7 +212,7 @@ export const Guarantor = () => {
                
                 <tbody>
                     {
-                        employees.map(employee => <GuarantorItem employee={employee} key={employee.id} setEmployees={setEmployees} />)
+                        guarantors.map(guarantor => <GuarantorItem guarantor={guarantor} key={guarantor.id} setGuarantors={setGuarantors} />)
                     }
                 </tbody>
             </table>

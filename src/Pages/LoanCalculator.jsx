@@ -1,14 +1,18 @@
 import "./LoanCalculator.css";
 import LoanJS from "loanjs";
 import { useState } from "react";
-
-
+import './summary.css'
+import { Link } from "react-router-dom";
+import LoanTable from "./LoanTable"; 
 export default function LoanCalculator() {
   const [values, setValues] = useState({
+    "loan-type": "",
     "loan-amount": 0,
     "loan-term": 0,
     "interest-rate": 0,
   });
+
+  
   const [installments, setInstallments] = useState([]);
 
   const handleInputChange = (event) => {
@@ -47,59 +51,26 @@ export default function LoanCalculator() {
       <h1 className="LoanWrite">Loan Calculator</h1>
 
       <form onSubmit={handleSubmit}>
-        <div className="form-item">
-          <label htmlFor="loan-amount">Purpose of loan</label>
-
-          
-          <div className="form-input">
-    <input
-      type="radio"
-      name="loan-purpose"
-      value="Working Capital"
-      checked={values["loan-purpose"] === "Working Capital"}
-      onChange={handleInputChange}
-    />
-    <label htmlFor="loan-purpose-working-capital">Working Capital</label>
-
-    <input
-      type="radio"
-      name="loan-purpose"
-      value="Business Expansion"
-      checked={values["loan-purpose"] === "Business Expansion"}
-      onChange={handleInputChange}
-    />
-    <label htmlFor="loan-purpose-business-expansion">Business Expansion</label>
-
-    <input
-      type="radio"
-      name="loan-purpose"
-      value="Equipment Financing"
-      checked={values["loan-purpose"] === "Equipment Financing"}
-      onChange={handleInputChange}
-    />
-    <label htmlFor="loan-purpose-equipment-financing">Equipment Financing</label>
-
-    <input
-      type="radio"
-      name="loan-purpose"
-      value="Inventory Financing"
-      checked={values["loan-purpose"] === "Inventory Financing"}
-      onChange={handleInputChange}
-    />
-    <label htmlFor="loan-purpose-inventory-financing">Inventory Financing</label>
-
-    <input
-      type="radio"
-      name="loan-purpose"
-      value="Startup Capital"
-      checked={values["loan-purpose"] === "Startup Capital"}
-      onChange={handleInputChange}
-    />
-    <label htmlFor="loan-purpose-startup-capital">Startup Capital</label>
-  </div>
-        </div>
+       
 
         <div className="form-item">
+        <label htmlFor="loan-type">Purpose of loan</label>
+        <div className="form-input">
+            <select
+              name="loan-type"
+              value={values["loan-type"]}
+              onChange={handleInputChange}
+            >
+                <option value="">Select a loan type</option>
+              <option value="Personal Loan">Personal Loan</option>
+              <option value="Home Loan">Home Loan</option>
+              <option value="Auto Loan">Auto Loan</option>
+              <option value="Student Loan">Student Loan</option>
+              <option value="Business Loan">Business Loan</option>
+            </select>
+          </div>
+          </div>
+          <div className="form-item">
           <label htmlFor="loan-amount">Loan Amount</label>
 
           
@@ -146,31 +117,12 @@ export default function LoanCalculator() {
         </div>
       </form>
 
-      {!!installments?.length && (
-        <table>
-          <thead>
-            <tr>
-              <th>Month</th>
-              <th>Payment Amount</th>
-              <th>Interest Paid</th>
-              <th>Principal Paid</th>
-              <th>Remain</th>
-            </tr>
-          </thead>
+     
+      <div className="loan-table">
+        {/* Pass the installments and amountFormat function as props */}
+        <LoanTable installments={installments} amountFormat={amountFormat} />
+      </div>
 
-          <tbody>
-            {installments.map((i, ind) => (
-              <tr key={ind}>
-                <td>{ind}</td>
-                <td>{amountFormat(i.installment)}</td>
-                <td>{amountFormat(i.interest)}</td>
-                <td>{amountFormat(i.capital)}</td>
-                <td>{amountFormat(i.remain)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
     </div>
   );
 }
