@@ -134,7 +134,7 @@ export const Work = () => {
                 showAlert && (
                     <div className="px-4">
                         <div className="alert alert-success">
-                            <strong>Well done!</strong> {id ? "edit" : "added a new"}
+                            <strong>Well done!</strong> {id ? "edit" : "Customer activity sector was added"}
                         </div>
                     </div>
                 )

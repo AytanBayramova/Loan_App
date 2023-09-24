@@ -6,6 +6,9 @@
 .bars-icon:hover{
     color: #ffffff;
 }
+.brand{
+    overflow: hidden;
+}
 
 .navbar{
     padding: 20px 307px;

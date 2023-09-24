@@ -22,6 +22,8 @@ export const WorkItem = ({ work, setworks }) => {
            
             <td>
                 <div className="d-flex gap-3">
+                {/* <span type="button" className="badge bg-danger" onClick={() => deleteWork()}>Delete</span> */}
+
                 </div>
             </td>
            

@@ -1,0 +1,12 @@
+{
+    "installments": [
+      {
+        "month": 1,
+        "paymentAmount": "",
+        "interestPaid": "",
+        "principalPaid": "",
+        "remainingBalance": ""
+      }
+    ]
+  }
+  

@@ -8,7 +8,6 @@ import { addGuarantor, getGuarantorById } from '../service/localstorageG';
 import { useForm } from './../hooks/useForm';
 import uuid from 'react-uuid';
 import { useState, useEffect } from 'react';
-import { editGuarantor } from './../service/localstorageG';
 export const Guarantor = () => {
     const navigate = useNavigate();
     
@@ -39,8 +38,8 @@ export const Guarantor = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const newGuarantor = { id: uuid(), ...inputValues };
-        addGuarantor(newGuarantor); // Add to local storage
-        setGuarantors((prevGuarantors) => [...prevGuarantors, newGuarantor]); // Update state
+        addGuarantor(newGuarantor); 
+        setGuarantors((prevGuarantors) => [...prevGuarantors, newGuarantor]); 
         resetForm();
         setshowAlert(true);
         setTimeout(() => {
